@@ -6,18 +6,28 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Main from './Layout/Main';
+import Home from './pages/Home/Home/Home';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div className='btn btn-primary'>Hello world!</div>,
+    element: <Main></Main>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      }
+    ]
   },
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div className='max-w-[1400px] mx-auto px-4'>
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>,
 )
